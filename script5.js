@@ -83,6 +83,7 @@ function removeColumn() {
 
     amountofColumns--;
 }
+
 function addRow() {
     //grab the grid from html
     let mainGrid = document.getElementById("main-grid");
@@ -114,6 +115,7 @@ for (let i=0; i < cellList.length; i++) {
     const cell = cellList[i];
     initializeCell(cell)
 }
+let currentColor = `${document.getElementById("color-select").value}`
 
 // changes color of a cell
 function changeColor() {
