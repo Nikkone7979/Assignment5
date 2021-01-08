@@ -1,5 +1,5 @@
 let row = 1;
-let col = 2;
+let col = 1;
 
 
 let coloring = false 
@@ -53,15 +53,19 @@ function addColumn() {
 /* Feature #3: remove rows from the grid */
 function removeRow() {
     
+    if(row != 1){
     let mainGrid = document.getElementById("table");
     
     mainGrid.deleteRow(row-1);
 
     row--;
 }
+}
 
 
 function removeColumn() {
+
+    if(col != 1){
     
     let mainGrid = document.getElementById("table");
     
@@ -78,8 +82,9 @@ function removeColumn() {
         rowCounter++;
        
     }
-
-    col--;
+     
+        col --;
+    }
 }
 
 
