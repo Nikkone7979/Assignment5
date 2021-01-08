@@ -1,8 +1,7 @@
  let amountofRows = 1;
     let amountofColumns = 2;
-var coloring = false;
-let x = document.getElementById("addRow");
-x.addEventListener("click", AddRow);
+let coloring = false;
+
 function AddRow() {
    
 } 
