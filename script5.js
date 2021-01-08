@@ -167,3 +167,4 @@ function clearAll() {
         cell.style.backgroundColor = 'slategrsy';
         cell.classList.add("uncolored");
     })
+}
