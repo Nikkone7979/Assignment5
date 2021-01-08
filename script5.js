@@ -11,7 +11,7 @@ function addColumn(){
 
     let rowCounter = 0;
 
-    for(let i = 0; i < amountofRows; i++) {
+    for(let i = 0; i < row; i++) {
         let cell = document.createElement("td");
         
         startCell(cell)
