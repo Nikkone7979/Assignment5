@@ -1,12 +1,32 @@
- let amountofRows = 1;
-    let amountofColumns = 2;
-let coloring = false;
+let amountofRows = 1;
+let amountofColumns = 2;
 
-function AddRow() {
-   
-} 
-function addColumn(){
-    //grab the main grid
+
+let coloring = false 
+
+
+function addRow() {
+    
+    let mainGrid = document.getElementById("main-grid");
+    let newRow = document.createElement("tr");
+    for(let i = 0; i < amountofColumns; i++) {
+        let cell = document.createElement("td");
+        
+        startCell(cell)
+
+        
+        cell.classList.add("uncolored");
+
+        newRow.appendChild(cell);
+    }
+
+    mainGrid.appendChild(newRow);
+    amountofRows++;
+}
+
+
+function addColumn() {
+
     let mainGrid = document.getElementById("main-grid");
     
     let allRows = document.querySelectorAll("tr");
@@ -16,54 +36,33 @@ function addColumn(){
     for(let i = 0; i < amountofRows; i++) {
         let cell = document.createElement("td");
         
-        startCell(cell)
+        initializeCell(cell)
         
         allRows[rowCounter].appendChild(cell);
 
         rowCounter++;
-        
+       
     }
 
-    
+   
     amountofColumns++;
+
 }
 
-function startCell(cell) {
-    // change color on click
-    cell.addEventListener("click", changeColor);
-    // give cell as class called "uncolored"
-    cell.classList.add("uncolored");
 
-    /* Feature #10:
-        click and hold (mouseover) from a single cell (start) to a different cell (end) 
-        such that all affected/hovered-over cells from start to end change to the 
-        currently selected color
-    */
+/* Feature #3: remove rows from the grid */
+function removeRow() {
+    
+    let mainGrid = document.getElementById("main-grid");
+    
+    mainGrid.deleteRow(amountofRows-1);
 
-    // on mousedown, start coloring
-    cell.addEventListener("mousedown", e => {
-        coloring = true
-    });
-
-    // if coloring, set background color of cell to the currentColor and remove the uncolored class
-    cell.addEventListener("mousemove", e => {
-        if (coloring) {
-            cell.style.backgroundColor = currentColor;
-            cell.classList.remove("uncolored");
-        }
-    });
-
-    // if coloring, on mouseup, set coloring to false
-    cell.addEventListener("mouseup", e => {
-        if (coloring) {
-            coloring = false;
-        }
-    })
+    amountofRows--;
 }
 
-/* Feature #4: remove columns from the grid */
+
 function removeColumn() {
-    //grab the main grid
+    
     let mainGrid = document.getElementById("main-grid");
     
     let allRows = document.querySelectorAll("tr");
@@ -83,26 +82,35 @@ function removeColumn() {
     amountofColumns--;
 }
 
-function addRow() {
-    //grab the grid from html
-    let mainGrid = document.getElementById("main-grid");
+
+
+
+let currentColor = `${document.getElementById("color-select").value}`
+
+
+function startCell(cell) {
     
-    let newRow = document.createElement("tr");
+    cell.addEventListener("click", changeColor);
+    
+    cell.classList.add("uncolored");
 
-    //populate the row with "squares" or cells aka TD elements
+   
+    cell.addEventListener("mousedown", e => {
+        coloring = true
+    });
 
-    for(let i = 0; i < amountofColumns; i++) {
-        let cell = document.createElement("td");
-        
-        startCell(cell)
+    cell.addEventListener("mousemove", e => {
+        if (coloring) {
+            cell.style.backgroundColor = currentColor;
+            cell.classList.remove("uncolored");
+        }
+    });
 
-        // mark the cell as uncolored. when it is colored, remove class
-        cell.classList.add("uncolored");
-
-        newRow.appendChild(cell);
-    }
-    mainGrid.appendChild(newRow);
-    amountofRows++;
+    cell.addEventListener("mouseup", e => {
+        if (coloring) {
+            coloring = false;
+        }
+    })
 }
 
 
@@ -112,29 +120,28 @@ let cellList = [...cells];
 
 for (let i=0; i < cellList.length; i++) {
     const cell = cellList[i];
-    initializeCell(cell)
+    startCell(cell)
 }
-let currentColor = `${document.getElementById("color-select").value}`
 
-// changes color of a cell
 function changeColor() {
     this.style.backgroundColor = currentColor;
 
-    
     this.classList.remove("uncolored")
 }
 
-// sets currentColor based on the color selected from dropdown
 function setCurrentColor(color) {
     currentColor = color;
 }
+
+
 function setUncolored() {
-    
     let allCells = document.getElementsByTagName("td");
     let allCellsList = [...allCells];
+
     const uncolored = allCellsList.filter(cell => {
         return cell.classList.contains("uncolored");
     });
+
     uncolored.forEach(cell => {
         cell.style.backgroundColor = currentColor;
         cell.classList.remove("uncolored");
@@ -142,18 +149,21 @@ function setUncolored() {
 }
 
 function setAllCurrent() {
+    // get all cells in the table
     let allCells = document.getElementsByTagName("td");
     let allCellsList = [...cells];
+
     allCellsList.forEach(cell => {
         cell.style.backgroundColor = currentColor;
         cell.classList.remove("uncolored");
     })
 }
 
-function removeRow() {
-    
-    let mainGrid = document.getElementById("main-grid");
-    
-    mainGrid.deleteRow(amountofRows-1);
+function clearAll() {
+    let allCells = document.getElementsByTagName("td");
+    let allCellsList = [...cells];
 
-    amountofRows--;
+    allCellsList.forEach(cell => {
+        cell.style.backgroundColor = 'slategrsy';
+        cell.classList.add("uncolored");
+    })
