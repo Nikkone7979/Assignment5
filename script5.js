@@ -1,5 +1,5 @@
 let amountofRows = 1;
-let amountofColumns = 2;
+let amountofColumns = 1;
 
 
 let coloring = false 
