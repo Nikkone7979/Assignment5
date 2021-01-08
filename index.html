@@ -9,12 +9,17 @@
     </head>
     <body>
         <!-- Feature #1: add rows to the grid -->
-    <button onclick="addRow()">Add Row</button>
-    <button onclick="removeRow()">Remove Row</button>
-    <button onclick="addColumn()">Add Column</button>
-    <button onclick="removeColumn()">Remove Column</button>
-    
-
+    <nav class="navbar">
+        <ul>
+      <li><button onclick="addRow()">Add Row</button></li>
+      <li><button onclick="removeRow()">Remove Row</button></li>
+      <li><button onclick="addColumn()">Add Column</button></li>
+      <li><button onclick="removeColumn()">Remove Column</button></li>
+      <li><button onclick="setUncolored()">Fill All uncolored</button></li>
+      <li><button onclick="setAllCurrent()">Fill All</button></li>
+      <li><button onclick="clearAll()">Clear All</button></li>
+    </ul>
+  </nav>
     <form>
       <p>
           <label>Select list</label>
@@ -27,12 +32,8 @@
       </p>
   </form>
 
-  
-  <button onclick="setUncolored()">Fill All uncolored</button>
-  <button onclick="setAllCurrent()">Fill All</button>
-  <button onclick="clearAll()">Clear All</button>
 
-    <table id="table">
+    <table id="table" border="0">
       <tr>
           <td></td>
          <!--  <td></td> -->
