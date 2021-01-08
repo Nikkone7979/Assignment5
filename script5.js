@@ -1,5 +1,5 @@
-let amountofRows = 1;
-let amountofColumns = 2;
+let row = 1;
+let col = 2;
 
 
 let coloring = false 
@@ -7,9 +7,9 @@ let coloring = false
 
 function addRow() {
     
-    let mainGrid = document.getElementById("main-grid");
+    let Table = document.getElementById("table");
     let newRow = document.createElement("tr");
-    for(let i = 0; i < amountofColumns; i++) {
+    for(let i = 0; i < col; i++) {
         let cell = document.createElement("td");
         
         startCell(cell)
@@ -20,20 +20,20 @@ function addRow() {
         newRow.appendChild(cell);
     }
 
-    mainGrid.appendChild(newRow);
-    amountofRows++;
+    Table.appendChild(newRow);
+    row++;
 }
 
 
 function addColumn() {
 
-    let mainGrid = document.getElementById("main-grid");
+    let mainGrid = document.getElementById("table");
     
     let allRows = document.querySelectorAll("tr");
 
     let rowCounter = 0;
 
-    for(let i = 0; i < amountofRows; i++) {
+    for(let i = 0; i < row; i++) {
         let cell = document.createElement("td");
         
         startCell(cell)
@@ -45,7 +45,7 @@ function addColumn() {
     }
 
    
-    amountofColumns++;
+    col++;
 
 }
 
@@ -53,17 +53,17 @@ function addColumn() {
 /* Feature #3: remove rows from the grid */
 function removeRow() {
     
-    let mainGrid = document.getElementById("main-grid");
+    let mainGrid = document.getElementById("table");
     
-    mainGrid.deleteRow(amountofRows-1);
+    mainGrid.deleteRow(row-1);
 
-    amountofRows--;
+    row--;
 }
 
 
 function removeColumn() {
     
-    let mainGrid = document.getElementById("main-grid");
+    let mainGrid = document.getElementById("table");
     
     let allRows = document.querySelectorAll("tr");
 
@@ -71,7 +71,7 @@ function removeColumn() {
 
 
 
-    for(let i = 0; i < amountofRows; i++) {
+    for(let i = 0; i < row; i++) {
     
         allRows[rowCounter].removeChild(allRows[rowCounter].lastChild);
 
@@ -79,7 +79,7 @@ function removeColumn() {
        
     }
 
-    amountofColumns--;
+    col--;
 }
 
 
