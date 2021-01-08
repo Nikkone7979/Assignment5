@@ -105,6 +105,7 @@ function addRow() {
     amountofRows++;
 }
 
+
 let cells = document.getElementsByTagName("td");
 let cellList = [...cells];
 
@@ -125,4 +126,13 @@ function changeColor() {
 // sets currentColor based on the color selected from dropdown
 function setCurrentColor(color) {
     currentColor = color;
+}
+
+function removeRow() {
+    
+    let mainGrid = document.getElementById("main-grid");
+    
+    mainGrid.deleteRow(amountofRows-1);
+
+    amountofRows--;
 }
