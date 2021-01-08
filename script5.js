@@ -129,6 +129,27 @@ function changeColor() {
 function setCurrentColor(color) {
     currentColor = color;
 }
+function setUncolored() {
+    
+    let allCells = document.getElementsByTagName("td");
+    let allCellsList = [...allCells];
+    const uncolored = allCellsList.filter(cell => {
+        return cell.classList.contains("uncolored");
+    });
+    uncolored.forEach(cell => {
+        cell.style.backgroundColor = currentColor;
+        cell.classList.remove("uncolored");
+    })
+}
+
+function setAllCurrent() {
+    let allCells = document.getElementsByTagName("td");
+    let allCellsList = [...cells];
+    allCellsList.forEach(cell => {
+        cell.style.backgroundColor = currentColor;
+        cell.classList.remove("uncolored");
+    })
+}
 
 function removeRow() {
     
