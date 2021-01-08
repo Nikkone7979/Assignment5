@@ -1,6 +1,6 @@
  let amountofRows = 1;
     let amountofColumns = 2;
-
+var coloring = false;
 let x = document.getElementById("addRow");
 x.addEventListener("click", AddRow);
 function AddRow() {
@@ -22,14 +22,14 @@ function addColumn(){
         allRows[rowCounter].appendChild(cell);
 
         rowCounter++;
-        // newRow.appendChild(cell);
+        
     }
 
-    // mainGrid.appendChild(newRow);
+    
     amountofColumns++;
 }
 
-function startsCell(cell) {
+function startCell(cell) {
     // change color on click
     cell.addEventListener("click", changeColor);
     // give cell as class called "uncolored"
@@ -82,4 +82,47 @@ function removeColumn() {
     }
 
     amountofColumns--;
+}
+function addRow() {
+    //grab the grid from html
+    let mainGrid = document.getElementById("main-grid");
+    
+    let newRow = document.createElement("tr");
+
+    //populate the row with "squares" or cells aka TD elements
+
+    for(let i = 0; i < amountofColumns; i++) {
+        let cell = document.createElement("td");
+        
+        startCell(cell)
+
+        // mark the cell as uncolored. when it is colored, remove class
+        cell.classList.add("uncolored");
+
+        newRow.appendChild(cell);
+    }
+    mainGrid.appendChild(newRow);
+    amountofRows++;
+}
+
+let cells = document.getElementsByTagName("td");
+let cellList = [...cells];
+
+
+for (let i=0; i < cellList.length; i++) {
+    const cell = cellList[i];
+    initializeCell(cell)
+}
+
+// changes color of a cell
+function changeColor() {
+    this.style.backgroundColor = currentColor;
+
+    // remove class "uncolored" because cell is now colored
+    this.classList.remove("uncolored")
+}
+
+// sets currentColor based on the color selected from dropdown
+function setCurrentColor(color) {
+    currentColor = color;
 }

@@ -1,30 +1,43 @@
 <html>
     <head>
-        <style>
-    .myDiv {
-        height: 50px;
-        width: 50px;
-        border: 1px solid blue;
-      }
-      #box {
-        width: 700px;
-        height: 700px;
-        border: solid black;
-        position: absolute;
-      }
-        </style>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title># 5</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <button id ="addRow" >Add Row</button>
-        <div id = "row"></div>
-       <br>
-       <br>
-        <!--#2 add columns to the grid-->
-        <button onclick="addColumn()">Add Column</button>
+        <!-- Feature #1: add rows to the grid -->
+    <button onclick="addRow()">Add Row</button>
 
-        <!-- Feature #4: remove columns from the grid -->
+    <!-- Feature #2: add columns to the grid -->
+    <button onclick="addColumn()">Add Column</button>
+  
+  <br>
+
+    <!-- Feature #3: remove rows from the grid -->
+    <button onclick="removeRow()">Remove Row</button>
+
+    <!-- Feature #4: remove columns from the grid -->
     <button onclick="removeColumn()">Remove Column</button>
+
+    <form>
+      <p>
+          <label>Select list</label>
+          <select id="color-select" onchange="setCurrentColor(this.value)"> <!-- 6 -->
+              <option value="#00008B">blue</option>
+              <option value="#2F4F4F">green</option>
+              <option value="##8B4513">brown</option>
+              <option value="#DA70D6">purple</option>
+          </select>
+      </p>
+  </form>
+    <table id="main-grid">
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+  </table>
         <script src="script5.js"></script>
     </body>
 </html>
