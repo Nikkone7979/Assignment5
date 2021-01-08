@@ -1,10 +1,8 @@
- let amountofRows = 1;
-    let amountofColumns = 2;
+ let col = 1;
+    let row = 0;
 let coloring = false;
 
-function AddRow() {
-   
-} 
+
 function addColumn(){
     //grab the main grid
     let mainGrid = document.getElementById("main-grid");
@@ -25,7 +23,7 @@ function addColumn(){
     }
 
     
-    amountofColumns++;
+    col++;
 }
 
 function startCell(cell) {
@@ -72,7 +70,7 @@ function removeColumn() {
 
 
 
-    for(let i = 0; i < amountofRows; i++) {
+    for(let i = 0; i < row; i++) {
     
         allRows[rowCounter].removeChild(allRows[rowCounter].lastChild);
 
@@ -91,7 +89,7 @@ function addRow() {
 
     //populate the row with "squares" or cells aka TD elements
 
-    for(let i = 0; i < amountofColumns; i++) {
+    for(let i = 0; i < col; i++) {
         let cell = document.createElement("td");
         
         startCell(cell)
@@ -102,7 +100,7 @@ function addRow() {
         newRow.appendChild(cell);
     }
     mainGrid.appendChild(newRow);
-    amountofRows++;
+    row++;
 }
 
 
