@@ -36,7 +36,7 @@ function addColumn() {
     for(let i = 0; i < amountofRows; i++) {
         let cell = document.createElement("td");
         
-        initializeCell(cell)
+        startCell(cell)
         
         allRows[rowCounter].appendChild(cell);
 
