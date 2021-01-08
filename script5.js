@@ -4,7 +4,7 @@ let col = 1;
 
 let coloring = false 
 
-
+//1. add rows to the grid
 function addRow() {
     
     let Table = document.getElementById("table");
@@ -24,7 +24,7 @@ function addRow() {
     row++;
 }
 
-
+//2.add rows to the grid
 function addColumn() {
 
     let mainGrid = document.getElementById("table");
@@ -50,7 +50,7 @@ function addColumn() {
 }
 
 
-/* Feature #3: remove rows from the grid */
+// Feature #3: remove rows from the grid 
 function removeRow() {
     
     if(row != 1){
@@ -62,7 +62,7 @@ function removeRow() {
 }
 }
 
-
+// #4 removes column
 function removeColumn() {
 
     if(col != 1){
@@ -89,10 +89,12 @@ function removeColumn() {
 
 
 
-
+// #6 click on a single cell, changing its color to the currently selected color
 let currentColor = `${document.getElementById("color-select").value}`
 
-
+/* click and hold (mouseover) from a single cell (start) 
+to a different cell (end) such that all affected/hovered-over 
+cells from start to end change to the currently selected color*/
 function startCell(cell) {
     
     cell.addEventListener("click", changeColor);
@@ -138,6 +140,7 @@ function setCurrentColor(color) {
     currentColor = color;
 }
 
+//fill all uncolored cells with the currently selected color
 
 function setUncolored() {
     let allCells = document.getElementsByTagName("td");
@@ -152,7 +155,7 @@ function setUncolored() {
         cell.classList.remove("uncolored");
     })
 }
-
+//fill all cells with the currently selected color
 function setAllCurrent() {
     // get all cells in the table
     let allCells = document.getElementsByTagName("td");
@@ -163,7 +166,7 @@ function setAllCurrent() {
         cell.classList.remove("uncolored");
     })
 }
-
+//clear all cells/restore all cells to their original/initial color
 function clearAll() {
     let allCells = document.getElementsByTagName("td");
     let allCellsList = [...cells];
