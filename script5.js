@@ -164,7 +164,7 @@ function clearAll() {
     let allCellsList = [...cells];
 
     allCellsList.forEach(cell => {
-        cell.style.backgroundColor = 'slategrsy';
+        cell.style.backgroundColor = 'slategray';
         cell.classList.add("uncolored");
     })
 }
