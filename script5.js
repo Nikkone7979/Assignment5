@@ -78,7 +78,7 @@ function removeColumn() {
        
     }
 
-    amountofColumns--;
+    col--;
 }
 
 function addRow() {
@@ -110,7 +110,7 @@ let cellList = [...cells];
 
 for (let i=0; i < cellList.length; i++) {
     const cell = cellList[i];
-    initializeCell(cell)
+    startCell(cell)
 }
 let currentColor = `${document.getElementById("color-select").value}`
 
@@ -152,7 +152,7 @@ function removeRow() {
     
     let mainGrid = document.getElementById("main-grid");
     
-    mainGrid.deleteRow(amountofRows-1);
+    mainGrid.deleteRow(row-1);
 
-    amountofRows--;
+    row--;
 }
