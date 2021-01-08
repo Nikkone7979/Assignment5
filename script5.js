@@ -28,6 +28,7 @@ function addColumn(){
     
     amountofColumns++;
 }
+let currentColor = `${document.getElementById("color-select").value}`
 
 function startCell(cell) {
     // change color on click
@@ -115,13 +116,12 @@ for (let i=0; i < cellList.length; i++) {
     const cell = cellList[i];
     initializeCell(cell)
 }
-let currentColor = `${document.getElementById("color-select").value}`
 
 // changes color of a cell
 function changeColor() {
     this.style.backgroundColor = currentColor;
 
-    // remove class "uncolored" because cell is now colored
+    
     this.classList.remove("uncolored")
 }
 
